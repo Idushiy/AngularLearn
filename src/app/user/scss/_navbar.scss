@@ -1,0 +1,52 @@
+// Styling for the navbar
+#mainNav {
+
+    background-color: $theme-bg-main;
+    .navbar-nav {
+
+      .nav-item {
+
+        .nav-link {
+
+          margin-top: 40px;
+          text-transform: uppercase;
+          display: block;
+          font-size: 12px;
+          font-weight: bold;
+          letter-spacing: 1px; //устанавливает интервал между символами ( normal | inherit)
+          color: black;
+          &.active,
+          &:hover {
+            color: $a-color;
+
+        }
+      }
+    }
+  }
+}
+
+@media(min-width: 992px) {
+  #mainNav {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    -webkit-transition: padding-top 0.3s, padding-bottom 0.3s;
+    -moz-transition: padding-top 0.3s, padding-bottom 0.3s;
+    transition: padding-top 0.3s, padding-bottom 0.3s;
+    border: none;
+    background-color: transparent;
+
+    .navbar-nav {
+      .nav-item {
+        .nav-link {
+          padding: 1.1em 1em !important;
+        }
+      }
+    }
+    &.navbar-shrink {
+      padding-top: 0;
+      padding-bottom: 0;
+      background-color: $theme-bg-main;
+
+    }
+  }
+}

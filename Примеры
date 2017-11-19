@@ -1,0 +1,61 @@
+
+
+
+[disabled]="значение в компоненте" Из компонента в шаблон
+(input)= из шаблона в компонент
+ 
+
+
+
+
+  
+//время активация через 4 сек
+canAddCar = false;
+ constructor() {
+    setTimeout( () =>{
+      this.canAddCar  = true;
+    },4000);
+  }
+
+
+//вывод значения в Инпуте (при вводе)
+<input type="text" class="form-control" #myInputDA (input)="addText(myInputDA.value)">
+  <p>{{inputText}}</p>
+
+  inputText = '';
+  addText(value) {
+    this.inputText = value;
+  }
+
+
+//При нажатии кнопки Ентер
+<input type="text" class="form-control"  (keyup)="addText($event)">
+  <p>{{inputText}}</p>
+
+  inputText = '';
+addText(event) {
+
+    if (event.code === 'Enter')
+    this.inputText = event.target.value;
+  }
+вариант 2
+(<input type="text" class="form-control"  (keyup.enter)="addText($event)">
+
+this.inputText = event.target.value;)
+
+
+
+
+/////// *ngIf 
+  addCar() {
+   this.addCarStatus = true;
+  }
+
+  addText(event) {
+    this.inputText = event.target.value;
+ <p *ngIf="!addCarStatus; else myCar">Нет тачки</p>
+  <ng-template #myCar>
+  <p >Заводи</p>
+  </ng-template>
+
+

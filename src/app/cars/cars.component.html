@@ -1,0 +1,26 @@
+
+<div class="container">
+  <input type="text"  class="form-group" [(ngModel)]="carName">
+  <button  (click)="addCar()" type="button" class="btn btn-primary btn-sm">Добавить машину</button>
+  <p *ngIf="!addCarStatus; else myCar">Нет тачки</p>
+  <ng-template #myCar>
+  <p >Заводи</p>
+  </ng-template>
+<app-car *ngFor="let car of cars"></app-car>
+  <li *ngFor="let item of items; let number = index " class="">
+    <b>{{number+1}}</b> - <i>{{item.name}}</i>
+  </li>
+
+  <form #loginForm="ngForm" class="form-signin" (ngSubmit)="login(loginForm)">
+    <div class="alert alert-danger" role="alert" *ngIf="showErrorMessage && loginForm.submitted">
+      Wrong credentials!
+    </div>
+    <h2 class="form-signin-heading">Please sign in</h2>
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email"
+           required autofocus ngModel>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password"
+           name="password" required ngModel>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  </form>
